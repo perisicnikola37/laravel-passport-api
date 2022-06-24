@@ -21,7 +21,7 @@ class ProductController extends Controller
     {
 
     // return NekiCollection::collection(Product::all());
-    return ProductCollection::collection(Product::all());
+    return ProductCollection::collection(Product::paginate(5));
 
     }
 
