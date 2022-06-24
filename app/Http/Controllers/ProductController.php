@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Http\Resources\NekiCollection;
 use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductCustomResource;
 use App\Http\Resources\ProductResource;
@@ -19,8 +20,8 @@ class ProductController extends Controller
     public function index()
     {
 
-    return ProductCustomResource::collection((Product::all()));
- 
+    // return NekiCollection::collection(Product::all());
+    return ProductCollection::collection(Product::all());
 
     }
 
