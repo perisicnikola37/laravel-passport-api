@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->biginteger('product_id')->unsigned()->index();
+            // kada se izbriše product, brišu se svi review-i koji su vezani za isti
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->string('customer');
             $table->text('review');
