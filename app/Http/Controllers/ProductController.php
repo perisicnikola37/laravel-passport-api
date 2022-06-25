@@ -11,6 +11,9 @@ use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductCustomResource;
 use App\Http\Resources\ProductResource;
 
+//! vazno
+use Illuminate\Http\Request;
+
 //!
 use Symfony\Component\HttpFoundation\Response;
 
@@ -110,9 +113,28 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(Request $request, Product $product)
     {
-        //
+
+        //! Zbog toga što u BP imam kolonu 'detail' a u PostMan-u
+        // {
+        // "name" : "Prvi Proizvod",
+        // "description" : "Opis prvog proizvoda",
+        // "price" : "100",
+        // "stock" : "10",
+        // "discount" : "50"
+        // }
+
+        $request['detail'] = $request->description;
+
+        unset($request['description']);
+        
+        $product->update($request->all());
+
+        return response([
+            'data' => new ProductResource($product)
+        ], Response::HTTP_CREATED);
+
     }
 
     /**
