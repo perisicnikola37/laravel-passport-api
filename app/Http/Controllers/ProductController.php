@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ProductNotBelongsToUser;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
@@ -10,10 +11,10 @@ use App\Http\Resources\NekiCollection;
 use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductCustomResource;
 use App\Http\Resources\ProductResource;
-
+use Exception;
 //! vazno
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 //!
 use Symfony\Component\HttpFoundation\Response;
 
@@ -116,6 +117,8 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
 
+        $this->ProductUserCheck($product);
+
         //! Zbog toga što u BP imam kolonu 'detail' a u PostMan-u
         // {
         // "name" : "Prvi Proizvod",
@@ -152,4 +155,17 @@ class ProductController extends Controller
 
 
     }
+
+
+
+    public function ProductUserCheck($product) {
+
+        if (Auth::id() !== $product->user_id) {
+            throw new ProductNotBelongsToUser();
+        }
+
+    }
+
+
+
 }
