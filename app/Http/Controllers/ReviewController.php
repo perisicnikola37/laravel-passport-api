@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateReviewRequest;
 use App\Http\Resources\ReviewResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ReviewController extends Controller
 {
@@ -98,8 +99,12 @@ class ReviewController extends Controller
      * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Review $review)
+    public function destroy(Product $product, Review $review)
     {
-        //
+        
+     $review->delete();
+
+     return response(null, Response::HTTP_NO_CONTENT);
+
     }
 }
