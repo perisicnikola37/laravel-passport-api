@@ -25,9 +25,10 @@ class ProductCollection extends JsonResource
             // ]
             // 'podaci' => $this->collection,
         
-            'name' => $this->name,
-            'totalPrice' => round((1 - ($this->discount/100)) *$this->price, 2),
-            'rating' => $this->reviews->count() > 0 ? round($this->reviews->sum('star')/$this->reviews->count(), 2) :'No rating yet..',
+            'ID' => $this->id,
+            'Name' => $this->name,
+            'Total Price' => round((1 - ($this->discount/100)) *$this->price, 2),
+            'Rating' => $this->reviews->count() > 0 ? round($this->reviews->sum('star')/$this->reviews->count(), 2) :'No rating yet..',
             'href' => [
             'link' => route('products.show', $this->id)
             ],

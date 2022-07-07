@@ -104,7 +104,7 @@ class ReviewController extends Controller
         
      $review->delete();
 
-     return response(null, Response::HTTP_NO_CONTENT);
+     echo 'Review successfully deleted.';
 
     }
 }

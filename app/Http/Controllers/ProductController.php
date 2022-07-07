@@ -137,11 +137,15 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)
-    {
+    {    
         
-        return $product->delete();
+        $this->ProductUserCheck($product);
 
-        return response(null, Response::HTTP_NO_CONTENT);
+        return response()->json([
+            "message" => "Successfully deleted.",
+        ]);
+
+        return $product->delete();
 
 
     }
