@@ -22,16 +22,9 @@ class ProductController extends Controller
 {
 
     public function __construct()
-
     {
-
         $this->middleware('auth:api')->except('index', 'show');
-
     }
-    
-
-
-
 
     /**
      * Display a listing of the resource.
@@ -40,10 +33,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-
     // return NekiCollection::collection(Product::all());
     return ProductCollection::collection(Product::paginate(5));
-
     }
 
     /**
@@ -67,13 +58,12 @@ class ProductController extends Controller
 
         $product = new Product;
 
+        $product->user_id = Auth::user()->id;
         $product->name = $request->name;
         $product->detail = $request->description;
         $product->stock = $request->stock;
         $product->price = $request->price;
         $product->discount = $request->discount;
-
-        $product->save();
 
         $product->save();
 
