@@ -50,37 +50,20 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-
         });
-
     }
 
-
-
-
-
-
-
     public function render($request, Throwable $exception)
-
     {
-
             if($exception instanceOf ModelNotFoundException) {
-
                 return response(['error' => 'Not found'], 404);
                 // return response()->json('Model not found', 404);
-    
             } 
-
             if ($exception instanceOf NotFoundHttpException) {
-                
                 return response(['error' => 'Incorrect route'], 400);
-
             }
-
      
         return parent::render($request, $exception);
-
     }
 
 

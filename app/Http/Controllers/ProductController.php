@@ -55,7 +55,6 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-
         $product = new Product;
 
         $product->user_id = Auth::user()->id;
@@ -64,13 +63,11 @@ class ProductController extends Controller
         $product->stock = $request->stock;
         $product->price = $request->price;
         $product->discount = $request->discount;
-
         $product->save();
 
         return response([
             'data' => new ProductResource($product)
         ], Response::HTTP_CREATED);
-        
     }
 
     /**
@@ -81,9 +78,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-
         return new ProductResource($product);
-
     }
 
     /**
@@ -106,7 +101,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-
         $this->ProductUserCheck($product);
 
         //! Zbog toga što u BP imam kolonu 'detail' a u PostMan-u
@@ -119,15 +113,12 @@ class ProductController extends Controller
         // }
 
         $request['detail'] = $request->description;
-
         unset($request['description']);
-        
         $product->update($request->all());
 
         return response([
             'data' => new ProductResource($product)
         ], Response::HTTP_CREATED);
-
     }
 
     /**
@@ -138,7 +129,6 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {    
-        
         $this->ProductUserCheck($product);
 
         return response()->json([
@@ -146,20 +136,11 @@ class ProductController extends Controller
         ]);
 
         return $product->delete();
-
-
     }
 
-
-
     public function ProductUserCheck($product) {
-
         if (Auth::id() !== $product->user_id) {
             throw new ProductNotBelongsToUser();
         }
-
     }
-
-
-
 }

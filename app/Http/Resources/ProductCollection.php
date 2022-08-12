@@ -32,7 +32,6 @@ class ProductCollection extends JsonResource
             'href' => [
             'link' => route('products.show', $this->id)
             ],
-
         ];
     }
 }

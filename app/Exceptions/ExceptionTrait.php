@@ -13,14 +13,14 @@ trait ExceptionTrait {
             
             if($e instanceOf ModelNotFoundException) {
 
-                return response(['error' => 'Model not found'], 500);
+                return response(['error' => 'Not found'], 500);
                 // return response()->json('Model not found', 404);
     
             } 
 
             if ($e instanceOf NotFoundHttpException) {
                 
-                return response(['error' => 'Incorrect route']);
+                return response(['error' => 'Incorrect route'], 404);
 
             }
 
