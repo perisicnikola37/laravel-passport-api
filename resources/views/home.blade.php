@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -13,8 +12,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     {{ __('You are logged in!') }}
+                    <p><a style="text-decoration: none" href="{{route('edit-user', $user->name)}}">Change password</a></p>
                 </div>
             </div>
         </div>
