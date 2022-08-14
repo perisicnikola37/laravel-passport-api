@@ -48,9 +48,11 @@ class HomeController extends Controller
         ]);
         if ($request->password) {
             $input['password'] = bcrypt($request->password);
-        } 
+        } else {
+            $input['password'] = $user->password;
+        }
         $user->whereId($id)->first()->update($input);
         
-        return back();
+        return back()->with('password-update', 'Password updated successfully!');
     }
 }

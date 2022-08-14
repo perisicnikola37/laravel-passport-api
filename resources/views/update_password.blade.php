@@ -7,21 +7,43 @@
     <title>Edit profile</title>
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/603/603197.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+      * {
+        margin-bottom: 10px;
+      }
+      .wrapper {
+        margin: 220px;
+      }
+    </style>
 </head>
 <body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="wrapper">
 
-    <form action="{{route('update-user', $user->id)}}" method="post">
-        @csrf
-        @method('PUT')
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+        @if (Session::has('password-update'))
+        <div class="alert alert-success" role="alert">
+        {{session('password-update')}}
         </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        @endif
+
+          <form action="{{route('update-user', $user->id)}}" method="post">
+            @csrf
+            @method('PUT')
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="New password.." name="password">
+            </div>
+            <button type="button" onclick="location.href='/home'" class="btn btn-success">Home</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      </div>
+    </div>
+  </div>
+
 </body>
+
 </html>
