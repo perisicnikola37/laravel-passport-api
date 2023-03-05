@@ -3,7 +3,7 @@
 Making a Request
 ----------------
 
-All requests start with http://127.0.0.1:8000/api
+All requests start with http://127.0.0.1:8000/api *note-> in testing environment
 
 ## Available requests
 
@@ -29,7 +29,7 @@ The actions you can access in the API are dependent upon the permission levels a
 
 If you find a typo or an error, please send a pull request. You can also submit an issue (which will require a GitHub account) and I will look into it.
 
-If you have questions or trouble implementing the API, you can reach me at 5dzoni5@gmail.com and I will help you out. 
+If you have questions or trouble implementing the API, you can reach me at perisicnikola37@gmail.com and I will help you out. 
 
 Status Code Explanations
 -------
@@ -41,4 +41,4 @@ Status Code Explanations
 
 Want to Chat?
 -------------
-Have you found a bug? Do you have an API feature request? [Submit an issue](https://github.com/dzonidevv/Laravel-Passport-API/issues) (requires a GitHub account)
+Have you found a bug? Do you have an API feature request? [Submit an issue](https://github.com/perisicnikola37/Laravel-Passport-API/issues) (requires a GitHub account)
